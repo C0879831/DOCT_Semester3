@@ -1,4 +1,4 @@
-name: Your Workflow Name
+name: VAriable Scope
 
 on:
   push:
@@ -9,7 +9,7 @@ env:
   MY_WORKFLOW_VARIABLE: "This is a workflow-level variable"
 
 jobs:
-  your_job_name:
+  display_variables:
     runs-on: ubuntu-latest
 
     env:
