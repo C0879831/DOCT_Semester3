@@ -1,0 +1,34 @@
+name: Your Workflow Name
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  MY_WORKFLOW_VARIABLE: "This is a workflow-level variable"
+
+jobs:
+  your_job_name:
+    runs-on: ubuntu-latest
+
+    env:
+      MY_JOB_VARIABLE: "This is a job-level variable"
+
+    steps:
+      - name: Display Workflow-level Variable
+        run: echo "Workflow-level Variable: $MY_WORKFLOW_VARIABLE"
+
+      - name: Display Job-level Variable
+        run: echo "Job-level Variable: $MY_JOB_VARIABLE"
+
+      - name: Define Step-level Variable
+        run: |
+          echo "Setting Step-level Variable"
+          export MY_STEP_VARIABLE="This is a step-level variable"
+          echo "Step-level Variable: $MY_STEP_VARIABLE"
+          
+      - name: Use Step-level Variable
+        run: |
+          echo "Using Step-level Variable: $MY_STEP_VARIABLE"
+          # You can perform other actions with $MY_STEP_VARIABLE here
