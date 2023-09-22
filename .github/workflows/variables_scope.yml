@@ -17,7 +17,8 @@ jobs:
 
     steps:
       - name: Display Workflow-level Variable
-        run: echo "Workflow-level Variable: $MY_WORKFLOW_VARIABLE"
+        var1: ${{MY_WORKFLOW_VARIABLE}}
+        run: echo "Workflow-level Variable: $var1"
 
       - name: Display Job-level Variable
         run: echo "Job-level Variable: $MY_JOB_VARIABLE"
