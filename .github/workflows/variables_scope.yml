@@ -1,4 +1,4 @@
-name: VAriable Scope
+name: Variable Scope
 
 on:
   push:
@@ -9,27 +9,25 @@ env:
   MY_WORKFLOW_VARIABLE: "This is a workflow-level variable"
 
 jobs:
-  display_variables:
+  deploy:
     runs-on: ubuntu-latest
-
     env:
       MY_JOB_VARIABLE: "This is a job-level variable"
-
     steps:
-      - name: Display Workflow-level Variable
-        var1: ${{MY_WORKFLOW_VARIABLE}}
-        run: echo "Workflow-level Variable: $var1"
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      - name: Display Job-level Variable
-        run: echo "Job-level Variable: $MY_JOB_VARIABLE"
+      - name: Print Workflow-Level Variable
+        run: echo $MY_WORKFLOW_VARIABLE
 
-      - name: Define Step-level Variable
+      - name: Print Job-Level Variable
+        run: echo $MY_JOB_VARIABLE
+
+      - name: My Step
+        env:
+          MY_STEP_VARIABLE: "This is a step-level variable"
         run: |
-          echo "Setting Step-level Variable"
-          export MY_STEP_VARIABLE="This is a step-level variable"
-          echo "Step-level Variable: $MY_STEP_VARIABLE"
-          
-      - name: Use Step-level Variable
+          echo $MY_STEP_VARIABLE
         run: |
           echo "Using Step-level Variable: $MY_STEP_VARIABLE"
           # You can perform other actions with $MY_STEP_VARIABLE here
