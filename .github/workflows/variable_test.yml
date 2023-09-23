@@ -1,9 +1,7 @@
 name: Variable test
 
 on:
-  push:
-    branches:
-      - main
+  push
 
 env:
   MY_WORKFLOW_VARIABLE: "This is a workflow-level variable"
