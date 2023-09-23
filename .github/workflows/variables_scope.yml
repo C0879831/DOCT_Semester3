@@ -3,7 +3,7 @@ name: Variable Scope
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   MY_WORKFLOW_VARIABLE: "This is a workflow-level variable"
