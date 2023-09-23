@@ -1,0 +1,31 @@
+name: Variable Scope
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  MY_WORKFLOW_VARIABLE: "This is a workflow-level variable"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      MY_JOB_VARIABLE: "This is a job-level variable"
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Print Workflow-Level Variable
+        run: echo $MY_WORKFLOW_VARIABLE
+
+      - name: Print Job-Level Variable
+        run: echo $MY_JOB_VARIABLE
+
+      - name: My Step
+        env:
+          MY_STEP_VARIABLE: "This is a step-level variable"
+        run: |
+          echo "Using Step-level Variable: $MY_STEP_VARIABLE"
+          # You can perform other actions with $MY_STEP_VARIABLE here
